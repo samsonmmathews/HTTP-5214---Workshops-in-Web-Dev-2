@@ -1,0 +1,5 @@
+Meeting minutes - Quirky Directory
+
+1) Created a repository in GitHub to collab
+2) Tested out firebase to see how it works
+3) Working on a simple design for the Quirky Directory
