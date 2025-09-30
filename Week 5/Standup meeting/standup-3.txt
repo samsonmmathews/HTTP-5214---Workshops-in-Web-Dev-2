@@ -1,0 +1,4 @@
+Meeting minutes - Quirky Directory
+
+1) Worked on read functionality
+2) Going to work and redesign the frontend
