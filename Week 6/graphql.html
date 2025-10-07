@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GraphQL</title>
+
+    <style>
+        h1 {
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        img {
+            width: 30vw;
+            margin: 0 0 2.5vw 2.5vw;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            line-height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>GraphQL and the Rick and Morty API</h1>
+
+    <script>
+
+        const graphqlEndpoint = 'https://rickandmortyapi.com/graphql';
+
+        const query = `
+            query {
+                characters(filter: { species: "Human" }) {
+                    results {
+                        name
+                        species
+                        image
+                    }
+                }
+            }
+            `;
+
+        fetch(graphqlEndpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            },
+            body: JSON.stringify({ query }),
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('GraphQL response:', data);
+                // Process the data and update your UI
+
+                let characters = data.data.characters.results;
+
+                let images = document.getElementById("images");
+
+                characters.forEach(function(character) { 
+                    
+                    /*
+                    console.log(character.name); 
+                    let newImage = document.createElement("img");
+                    newImage.src = character.image;
+
+                    images.append(newImage);
+                    */
+
+                    images.innerHTML += `
+                        <h2>${character.name}</h2>
+                        <p>${character.species}</p>
+                        <img src="${character.image}">
+                        <hr>
+                        `;
+                        
+                });
+
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+
+    </script>
+</body>
+
+<div id="images"></div>
+
+</html>
