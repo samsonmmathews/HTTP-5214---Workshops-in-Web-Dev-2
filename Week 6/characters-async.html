@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rick and Morty Characters</title>
+
+    <style>
+        h1 {
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        img {
+            width: 30vw;
+            margin: 0 0 2.5vw 2.5vw;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            line-height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Rick and Morty Characters</h1>
+
+    <script>
+
+        // https://rickandmortyapi.com/documentation
+        
+        // Using async 
+
+        let url = "https://rickandmortyapi.com/api/character";
+
+        async function fetchCharacters() {
+            let response = await fetch(url);
+            console.log(response);
+
+            let data = await response.json();
+            console.log(data);
+
+            let images = document.getElementById("images");
+
+            data.results.forEach(function (character) {
+                console.log(character.name);
+                let newImage = document.createElement("img");
+                newImage.src = character.image;
+
+                images.append(newImage);
+            });
+        }
+
+        fetchCharacters();
+
+    </script>
+
+    <div id="images"></div>
+
+</body>
+
+</html>
