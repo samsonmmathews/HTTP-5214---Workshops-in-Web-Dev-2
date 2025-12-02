@@ -1,0 +1,4 @@
+Meeting minutes - Collaborative coding
+
+1) Worked on BrickMMO parts - minifigs
+2) Displayed four random minifigs horizontally
